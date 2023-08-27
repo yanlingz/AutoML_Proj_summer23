@@ -1,0 +1,9 @@
+numpy
+torch
+torchvision
+tqdm
+torchsummary
+scikit-learn
+smac>=2.0.0
+pandas
+thop
