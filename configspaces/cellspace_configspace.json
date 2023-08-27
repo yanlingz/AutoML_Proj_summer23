@@ -1,0 +1,110 @@
+{
+  "name": "Cell Space Search",
+  "hyperparameters": [
+    {
+      "name": "dataset",
+      "type": "constant",
+      "value": "deepweedsx_balanced"
+    },
+    {
+      "name": "budget_type",
+        "type": "constant",
+        "value": "image_size"
+    },
+    {
+      "name": "device",
+      "type": "constant",
+      "value": "cuda"
+    },
+    {
+      "name": "kernel_size",
+      "type": "constant",
+      "value": 3
+    },
+    {
+      "name": "dropout_rate",
+      "type": "constant",
+      "value": 0.2
+    },
+    {
+      "name": "batch_size",
+      "type": "uniform_int",
+      "log": false,
+      "lower": 32,
+      "upper": 128,
+      "default": 32
+    },
+    {
+      "name": "learning_rate_init",
+      "type": "uniform_float",
+      "log": true,
+      "lower": 1e-05,
+      "upper": 1e-02,
+      "default": 1e-03
+    },
+    {
+      "name": "use_BN",
+      "type": "categorical",
+      "choices": [true, false],
+      "default": true
+    },
+    {
+      "name": "global_avg_pooling",
+      "type": "categorical",
+      "choices": [true, false],
+      "default": true
+    },
+    {
+      "name": "op_normal_0",
+      "type": "categorical",
+      "choices": ["conv_3x3", "conv_5x5", "aug_max_pool_3x3"],
+      "default": "conv_3x3"
+    },
+    {
+      "name": "op_normal_1",
+      "type": "categorical",
+      "choices": ["conv_3x3", "conv_5x5", "aug_max_pool_3x3"],
+      "default": "conv_3x3"
+    },
+    {
+      "name": "op_normal_2",
+      "type": "categorical",
+      "choices": ["conv_3x3", "conv_5x5", "aug_max_pool_3x3"],
+      "default": "conv_3x3"
+    },
+    {
+      "name": "op_normal_3",
+      "type": "categorical",
+      "choices": ["conv_3x3", "conv_5x5", "aug_max_pool_3x3"],
+      "default": "conv_3x3"
+    },
+    {
+      "name": "op_reduction_0",
+      "type": "categorical",
+      "choices": ["conv_3x3", "conv_5x5", "aug_max_pool_3x3"],
+      "default": "conv_3x3"
+    },
+    {
+      "name": "op_reduction_1",
+      "type": "categorical",
+      "choices": ["conv_3x3", "conv_5x5", "aug_max_pool_3x3"],
+      "default": "conv_3x3"
+    },
+    {
+      "name": "op_reduction_2",
+      "type": "categorical",
+      "choices": ["conv_3x3", "conv_5x5", "aug_max_pool_3x3"],
+      "default": "conv_3x3"
+    },
+    {
+      "name": "op_reduction_3",
+      "type": "categorical",
+      "choices": ["conv_3x3", "conv_5x5", "aug_max_pool_3x3"],
+      "default": "conv_3x3"
+    }
+  ],
+  "conditions": [],
+  "forbiddens": [],
+  "python_module_version": "0.6.1",
+  "json_format_version": 0.4
+}
