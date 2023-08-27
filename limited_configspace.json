@@ -1,0 +1,122 @@
+{
+  "hyperparameters": [
+    {
+      "name": "dataset",
+      "type": "constant",
+      "value": "deepweedsx_balanced"
+    },
+    {
+      "name": "device",
+      "type": "constant",
+      "value": "cuda"
+    },
+    {
+      "name": "kernel_size",
+      "type": "constant",
+      "value": 3
+    },
+    {
+      "name": "dropout_rate",
+      "type": "uniform_float",
+      "log": false,
+      "lower": 0.2,
+      "upper": 0.5,
+      "default": 0.2
+    },
+    {
+      "name": "batch_size",
+      "type": "uniform_int",
+      "log": false,
+      "lower": 15,
+      "upper": 60,
+      "default": 32
+    },
+    {
+      "name": "learning_rate_init",
+      "type": "uniform_float",
+      "log": true,
+      "lower": 1e-05,
+      "upper": 1e-02,
+      "default": 1e-03
+    },
+    {
+      "name": "use_BN",
+      "type": "categorical",
+      "choices": [true, false],
+      "default": true
+    },
+    {
+      "name": "global_avg_pooling",
+      "type": "categorical",
+      "choices": [true, false],
+      "default": true
+    },
+    {
+      "name": "n_conv_layers",
+      "type": "constant",
+      "value": 3
+    },
+    {
+      "name": "n_channels_conv_0",
+      "type": "constant",
+      "value": 32
+    },
+    {
+      "name": "n_channels_conv_1",
+      "type": "constant",
+      "value": 32
+    },
+    {
+      "name": "n_channels_conv_2",
+      "type": "constant",
+      "value": 16
+    },
+    {
+      "name": "n_fc_layers",
+      "type": "constant",
+      "value": 3
+    },
+    {
+      "name": "n_channels_fc_0",
+      "type": "constant",
+      "value": 64
+    },
+    {
+      "name": "n_channels_fc_1",
+      "type": "uniform_int",
+      "log": true,
+      "lower": 16,
+      "upper": 64,
+      "default": 64
+    },
+    {
+      "name": "n_channels_fc_2",
+      "type": "uniform_int",
+      "log": true,
+      "lower": 16,
+      "upper": 64,
+      "default": 64
+    }
+  ],
+  "conditions": [
+    {
+      "child": "n_channels_fc_1",
+      "parent": "n_fc_layers",
+      "type": "IN",
+      "values": [
+        3
+      ]
+    },
+    {
+      "child": "n_channels_fc_2",
+      "parent": "n_fc_layers",
+      "type": "IN",
+      "values": [
+        3
+      ]
+    }
+  ],
+  "forbiddens": [],
+  "python_module_version": "0.6.1",
+  "json_format_version": 0.4
+}
