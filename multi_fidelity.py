@@ -73,7 +73,6 @@ def configuration_space(
             "learning_rate_init": Float(
                 "learning_rate_init",
                 (1e-05, 1e-02),
-                # (1e-05, 1e-02),
                 default=1e-03,
                 log=True,
             ),
@@ -242,9 +241,18 @@ def cnn_from_cfg(
 
 class ScheduledAQF(AbstractAcquisitionFunction):
     def __init__(self, budget: int, xi_PI: float = 0.0, xi_EI: float = 0.0):
+        """
+        Custom acquisition function designed for multi-fidelity optimization.
+
+        Parameters:
+        - budget (int): The total budget allocated for optimization.
+        - xi_PI (float): Exploration parameter for Probability of Improvement (PI) acquisition function.
+        - xi_EI (float): Exploration parameter for Expected Improvement (EI) acquisition function.
+        """
         super(ScheduledAQF, self).__init__()
         self._budget = budget
 
+        # Allocates the first 25 % of the optimization budget to EI and the last 75 % to PI
         self._PI_budget = int(0.25 * budget)
         self._EI_budget = budget - self._PI_budget
 
